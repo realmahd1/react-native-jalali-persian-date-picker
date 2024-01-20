@@ -1,20 +1,29 @@
 import React, { memo } from 'react';
-import { View, Text, TouchableOpacity, type ViewStyle, type StyleProp, type TextStyle, type ColorValue } from 'react-native';
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  type ViewStyle,
+  type StyleProp,
+  type TextStyle,
+  type ColorValue,
+} from 'react-native';
 import { toPersian } from '../utils';
 
 type TDay = {
-  item : string,
-  onDateChange :()=>void,
-  isSelected:boolean,
-  disabled:boolean,
-  dayStyle:StyleProp<ViewStyle>,
-  selectedDayStyle:StyleProp<ViewStyle>,
-  selectedDayColor: ColorValue | undefined,
-  dayTextStyle:StyleProp<TextStyle>,
-  selectedDayTextColor:ColorValue | undefined,
-  dayTextColor:ColorValue | undefined,
-  disabledTextColor:ColorValue | undefined
-}
+  item: string;
+  onDateChange: () => void;
+  isSelected: boolean;
+  disabled: boolean;
+  dayStyle: StyleProp<ViewStyle>;
+  selectedDayStyle: StyleProp<ViewStyle>;
+  selectedDayColor: ColorValue | undefined;
+  dayTextStyle: StyleProp<TextStyle>;
+  selectedDayTextColor: ColorValue | undefined;
+  dayTextColor: ColorValue | undefined;
+  disabledTextColor: ColorValue | undefined;
+};
+
 const Day = memo(
   ({
      item,
@@ -28,7 +37,7 @@ const Day = memo(
      selectedDayTextColor,
      dayTextColor,
      disabledTextColor
-   }:TDay) => {
+   }: TDay) => {
     const blank = item === '.';
     if (blank) {
       return <View style={dayStyle} />;
@@ -43,9 +52,9 @@ const Day = memo(
         <View
           style={[
             {
-              backgroundColor: isSelected ? selectedDayColor : 'transparent'
+              backgroundColor: isSelected ? selectedDayColor : 'transparent',
             },
-            selectedDayStyle
+            selectedDayStyle,
           ]}
         >
           <Text
@@ -56,9 +65,9 @@ const Day = memo(
                   ? disabledTextColor
                   : isSelected
                     ? selectedDayTextColor
-                    : dayTextColor
+                    : dayTextColor,
               },
-              dayTextStyle
+              dayTextStyle,
             ]}
           >
             {toPersian(item)}
@@ -66,6 +75,6 @@ const Day = memo(
         </View>
       </TouchableOpacity>
     );
-  }
+  },
 );
-export default Day
+export default Day;

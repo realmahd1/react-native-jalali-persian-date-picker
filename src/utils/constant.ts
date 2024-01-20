@@ -10,4 +10,3 @@ export const PERSIAN_DIGITS: string[] = [
   '۸',
   '۹',
 ];
-
