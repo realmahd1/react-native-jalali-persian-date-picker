@@ -10,3 +10,4 @@ export const PERSIAN_DIGITS: string[] = [
   '۸',
   '۹',
 ];
+export const WEEKDAYS_SHORT: string[] = ['ش', 'ی', 'د', 'س', 'چ', 'پ', 'ج'];

@@ -30,3 +30,10 @@ export type TDay = {
   dayTextColor: ColorValue | undefined;
   disabledTextColor: ColorValue | undefined;
 };
+
+export type TWeekdays = {
+  weekdaysContainerStyle: StyleProp<ViewStyle>;
+  weekdayStyle: StyleProp<ViewStyle>;
+  weekdayTextStyle: StyleProp<TextStyle>;
+  borderColor: ColorValue | undefined
+}

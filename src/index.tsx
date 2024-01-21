@@ -1,12 +1,14 @@
 import React, { PureComponent } from 'react';
 import { Platform, UIManager, View } from 'react-native';
-import Calendar from './components/Calendar';
 import { DEFAULT_PROPS } from './props';
 import type { TProps } from './types';
+import Calendar from './components/Calendar';
+import Weekdays from './components/Weekdays';
+
 class DatePicker extends PureComponent<TProps> {
   static defaultProps = DEFAULT_PROPS;
 
-  constructor(props:TProps) {
+  constructor(props: TProps) {
     super(props);
 
     let year = 0;
@@ -17,7 +19,7 @@ class DatePicker extends PureComponent<TProps> {
       const selectedDate = props.selectedDate as string;
       const dateSeparator = props.dateSeparator as string;
 
-      const dateComponents:string[] = selectedDate.split(dateSeparator);
+      const dateComponents: string[] = selectedDate.split(dateSeparator);
       if (dateComponents.length >= 2) {
         year = parseInt(dateComponents[0] as string);
         month = parseInt(dateComponents[1] as string);
@@ -40,10 +42,39 @@ class DatePicker extends PureComponent<TProps> {
   }
 
   renderContent() {
+    const { mode } = this.state as { mode: string };
+
+    switch (mode) {
+      case 'calendar':
+        return (
+          <>
+            {this.renderWeekdays()}
+            {this.renderCalendar()}
+          </>
+        );
+      default :
+        return (
+          <></>
+        );
+
+    }
+  }
+
+  renderWeekdays() {
+    const {
+      weekdaysContainerStyle,
+      weekdayStyle,
+      weekdayTextStyle,
+      borderColor,
+    } = this.props;
+
     return (
-      <>
-        {this.renderCalendar()}
-      </>
+      <Weekdays
+        weekdaysContainerStyle={weekdaysContainerStyle}
+        weekdayStyle={weekdayStyle}
+        weekdayTextStyle={weekdayTextStyle}
+        borderColor={borderColor}
+      />
     );
   }
 
