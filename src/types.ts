@@ -1,6 +1,6 @@
-import type { StyleProp, ViewStyle, TextStyle, ImageStyle } from 'react-native';
+import type { StyleProp, ViewStyle, ImageSourcePropType, TextStyle, ImageStyle } from 'react-native';
 
-export type TProps =  {
+export type TProps = {
   /**
    * @required
    * Calendar container style
@@ -60,7 +60,7 @@ export type TProps =  {
   /**
    * Path to back icon
    */
-  backIcon?: string;
+  backIcon?: ImageSourcePropType | undefined;
 
   /**
    * Back icon style
@@ -70,7 +70,7 @@ export type TProps =  {
   /**
    * Path to next icon
    */
-  nextIcon?: string;
+  nextIcon?: ImageSourcePropType | undefined;
 
   /**
    * Next icon style

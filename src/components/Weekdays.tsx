@@ -4,14 +4,11 @@ import { WEEKDAYS_SHORT } from '../utils';
 import type { TWeekdays } from './types';
 
 const Weekdays = memo(
-  ({ weekdaysContainerStyle, weekdayStyle, weekdayTextStyle, borderColor }: TWeekdays) => {
+  ({ weekdaysContainerStyle, weekdayStyle, weekdayTextStyle }: TWeekdays) => {
     const renderWeekdays = (day: string) => (
       <View
         key={day}
-        style={[
-          { borderBottomWidth: 1, borderBottomColor: borderColor },
-          weekdayStyle,
-        ]}
+        style={weekdayStyle}
       >
         <Text style={weekdayTextStyle}>{day}</Text>
       </View>

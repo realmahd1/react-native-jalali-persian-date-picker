@@ -1,7 +1,7 @@
 import { today, lastYear, nextYear } from './utils';
 import type { TProps } from './types';
 
-export const DEFAULT_PROPS:TProps = {
+export const DEFAULT_PROPS: TProps = {
   // Date Picker
   showMonthLabel: true,
   style: {
@@ -12,39 +12,36 @@ export const DEFAULT_PROPS:TProps = {
     borderWidth: 1,
     borderColor: 'black',
     borderRadius: 10,
-    elevation: 4
+    elevation: 4,
   },
   selectedDate: today(),
   dateSeparator: '/',
   minDate: lastYear(),
   maxDate: nextYear(),
-  onDateChange: (date:string) => console.log(date),
+  onDateChange: (date: string) => console.log(date),
 
   // Header
   headerContainerStyle: { height: '15%' },
   yearMonthBoxStyle: {
-    width: '30%',
     height: '75%',
     justifyContent: 'center',
     alignItems: 'center',
-    borderWidth: 1,
-    borderRadius: 10
   },
   yearMonthTextStyle: { fontSize: 22, color: 'black' },
   iconContainerStyle: { width: `${100 / 7}%` },
-  backIcon: require('./icons/01.png'),
+  backIcon: { uri: 'https://img.icons8.com/metro/52/forward.png' },
   backIconStyle: {
     width: 20,
     height: 20,
     resizeMode: 'center',
-    tintColor: 'black'
+    tintColor: 'coral',
   },
-  nextIcon: require('./icons/02.png'),
+  nextIcon: { uri: 'https://img.icons8.com/metro/52/back.png' },
   nextIconStyle: {
     width: 20,
     height: 20,
     resizeMode: 'center',
-    tintColor: 'coral'
+    tintColor: 'coral',
   },
 
   // Years
@@ -58,7 +55,7 @@ export const DEFAULT_PROPS:TProps = {
     marginBottom: 5,
     marginHorizontal: '1.5%',
     borderRadius: 10,
-    elevation: 3
+    elevation: 3,
   },
   eachYearTextStyle: { fontSize: 16, color: 'white' },
 
@@ -71,7 +68,7 @@ export const DEFAULT_PROPS:TProps = {
     backgroundColor: 'coral',
     marginBottom: '3%',
     borderRadius: 10,
-    elevation: 3
+    elevation: 3,
   },
   eachMonthTextStyle: { fontSize: 16, color: 'white' },
 
@@ -82,7 +79,7 @@ export const DEFAULT_PROPS:TProps = {
     justifyContent: 'center',
     alignItems: 'center'
   },
-  weekdayTextStyle: { fontSize: 16, color: 'black', marginBottom: 5 },
+  weekdayTextStyle: { fontSize: 16, color: 'coral', marginBottom: 5, fontWeight: 'bold' },
   borderColor: 'coral',
 
   // Days
@@ -90,18 +87,18 @@ export const DEFAULT_PROPS:TProps = {
     width: `${100 / 7}%`,
     justifyContent: 'center',
     alignItems: 'center',
-    aspectRatio: 1
+    aspectRatio: 1,
   },
   selectedDayStyle: {
     width: '70%',
     aspectRatio: 1,
     justifyContent: 'center',
     alignItems: 'center',
-    borderRadius: 100
+    borderRadius: 100,
   },
   selectedDayColor: 'coral',
   dayTextStyle: { fontSize: 18 },
   selectedDayTextColor: '#FFFFFF',
   dayTextColor: '#111111',
-  disabledTextColor: '#999999'
+  disabledTextColor: '#999999',
 };

@@ -1,4 +1,4 @@
-import type { ColorValue, StyleProp, TextStyle, ViewStyle } from 'react-native';
+import type { ColorValue, ImageSourcePropType, ImageStyle, StyleProp, TextStyle, ViewStyle } from 'react-native';
 
 export type TCalendar = {
   year: number;
@@ -35,5 +35,28 @@ export type TWeekdays = {
   weekdaysContainerStyle: StyleProp<ViewStyle>;
   weekdayStyle: StyleProp<ViewStyle>;
   weekdayTextStyle: StyleProp<TextStyle>;
-  borderColor: ColorValue | undefined
+}
+
+export type THeader = {
+  mode: string | undefined;
+  containerStyle: StyleProp<ViewStyle>;
+  changeModeTo: (mode: string) => void;
+  yearMonthTextStyle: StyleProp<TextStyle>
+  iconContainerStyle: StyleProp<ViewStyle>;
+  backIcon: ImageSourcePropType | undefined;
+  backIconStyle: StyleProp<ImageStyle>;
+  year: number;
+  month: number;
+  nextIcon: ImageSourcePropType | undefined;
+  nextIconStyle: StyleProp<ImageStyle>;
+  decreaseYear: Function;
+  increaseYear: Function;
+  decreaseMonth: Function;
+  increaseMonth: Function;
+  minYear: number;
+  maxYear: number;
+  minMonth: number;
+  maxMonth: number;
+  yearMonthBoxStyle: StyleProp<ViewStyle>;
+  isShowMonthLabel: boolean | undefined;
 }
