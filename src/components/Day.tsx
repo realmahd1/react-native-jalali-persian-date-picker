@@ -1,28 +1,7 @@
 import React, { memo } from 'react';
-import {
-  View,
-  Text,
-  TouchableOpacity,
-  type ViewStyle,
-  type StyleProp,
-  type TextStyle,
-  type ColorValue,
-} from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import { toPersian } from '../utils';
-
-type TDay = {
-  item: string;
-  onDateChange: () => void;
-  isSelected: boolean;
-  disabled: boolean;
-  dayStyle: StyleProp<ViewStyle>;
-  selectedDayStyle: StyleProp<ViewStyle>;
-  selectedDayColor: ColorValue | undefined;
-  dayTextStyle: StyleProp<TextStyle>;
-  selectedDayTextColor: ColorValue | undefined;
-  dayTextColor: ColorValue | undefined;
-  disabledTextColor: ColorValue | undefined;
-};
+import type { TDay } from './types';
 
 const Day = memo(
   ({
@@ -36,7 +15,7 @@ const Day = memo(
      dayTextStyle,
      selectedDayTextColor,
      dayTextColor,
-     disabledTextColor
+     disabledTextColor,
    }: TDay) => {
     const blank = item === '.';
     if (blank) {
