@@ -83,9 +83,19 @@ export type TProps = {
   eachYearStyle?: StyleProp<ViewStyle>;
 
   /**
+   * Selected Each year box style in year selector
+   */
+  selectedEachYearStyle?: StyleProp<ViewStyle>;
+
+  /**
    * Each year text style in year selector
    */
   eachYearTextStyle?: StyleProp<TextStyle>;
+
+  /**
+   * Selected Each year text style in year selector
+   */
+  selectedEachYearTextStyle?: StyleProp<TextStyle>;
 
   /**
    * Each month box style in month selector

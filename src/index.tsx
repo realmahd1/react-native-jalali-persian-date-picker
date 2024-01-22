@@ -5,12 +5,17 @@ import type { TProps } from './types';
 import Calendar from './components/Calendar';
 import Weekdays from './components/Weekdays';
 import Header from './components/Header';
+import YearSelector from './components/YearSelector';
 
 type TState = {
   year: number;
   month: number;
   date: string;
   mode: string;
+  minYear: number;
+  minMonth: number;
+  maxYear: number;
+  maxMonth: number;
 };
 
 class DatePicker extends PureComponent<TProps, TState> {
@@ -34,19 +39,56 @@ class DatePicker extends PureComponent<TProps, TState> {
       }
       date = selectedDate;
     }
-    this.state = {
-      year,
-      month,
-      date,
-      mode: 'calendar',
-    };
-
 
     if (Platform.OS === 'android') {
       UIManager.setLayoutAnimationEnabledExperimental &&
       UIManager.setLayoutAnimationEnabledExperimental(true);
     }
+    let minYear = 0;
+    let minMonth = 0;
+    let maxYear = 0;
+    let maxMonth = 0;
 
+    if (props.minDate && props.maxDate && props.dateSeparator) {
+      const minDateArray: string[] = props.minDate.split(props.dateSeparator);
+      if (minDateArray.length >= 2) {
+        minYear = parseInt(minDateArray[0] as string);
+        minMonth = parseInt(minDateArray[1] as string);
+      }
+      const maxDateArray: string[] = props.maxDate.split(props.dateSeparator);
+      if (minDateArray.length >= 2) {
+        maxYear = parseInt(maxDateArray[0] as string);
+        maxMonth = parseInt(maxDateArray[1] as string);
+      }
+    }
+    this.state = {
+      year,
+      month,
+      date,
+      mode: 'calendar',
+      minYear,
+      minMonth,
+      maxYear,
+      maxMonth,
+    };
+  }
+
+  renderYears() {
+    const { eachYearStyle, eachYearTextStyle, selectedEachYearTextStyle, selectedEachYearStyle } = this.props;
+    const onYearChange = (year: number) => this.setState({ year, mode: 'month' });
+
+    return (
+      <YearSelector
+        year={this.state.year}
+        onYearChange={onYearChange}
+        eachYearStyle={eachYearStyle}
+        selectedEachYearTextStyle={selectedEachYearTextStyle}
+        eachYearTextStyle={eachYearTextStyle}
+        selectedEachYearStyle={selectedEachYearStyle}
+        minYear={this.state.minYear}
+        maxYear={this.state.maxYear}
+      />
+    );
   }
 
   renderContent() {
@@ -60,6 +102,8 @@ class DatePicker extends PureComponent<TProps, TState> {
             {this.renderCalendar()}
           </>
         );
+      case 'year':
+        return this.renderYears();
       default :
         return (
           <></>
@@ -85,10 +129,9 @@ class DatePicker extends PureComponent<TProps, TState> {
   }
 
   renderHeader() {
-    const { year, month, mode } = this.state;
+    const { year, month, mode, minYear, maxYear, minMonth, maxMonth } = this.state;
     const {
       showMonthLabel,
-      dateSeparator,
       headerContainerStyle,
       yearMonthTextStyle,
       iconContainerStyle,
@@ -97,8 +140,6 @@ class DatePicker extends PureComponent<TProps, TState> {
       nextIcon,
       nextIconStyle,
       yearMonthBoxStyle,
-      minDate,
-      maxDate,
     } = this.props;
 
     const changeModeTo = (mode: string) => this.setState({ mode });
@@ -124,23 +165,6 @@ class DatePicker extends PureComponent<TProps, TState> {
         return { month: prevState.month - 1 } as TState;
       });
 
-    let minYear = 0;
-    let minMonth = 0;
-    let maxYear = 0;
-    let maxMonth = 0;
-
-    if (minDate && maxDate && dateSeparator) {
-      const minDateArray: string[] = minDate.split(dateSeparator);
-      if (minDateArray.length >= 2) {
-        minYear = parseInt(minDateArray[0] as string);
-        minMonth = parseInt(minDateArray[1] as string);
-      }
-      const maxDateArray: string[] = maxDate.split(dateSeparator);
-      if (minDateArray.length >= 2) {
-        maxYear = parseInt(maxDateArray[0] as string);
-        maxMonth = parseInt(maxDateArray[1] as string);
-      }
-    }
 
     return (
       <Header

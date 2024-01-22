@@ -63,7 +63,11 @@ export const getDays = (year:number, month:number) => {
     ...Array.from({ length: daysLength }, (_, i) => i + 1)
   ];
 };
+export const getYears = (min:number, max:number) => {
+  const length = max - min + 1;
 
+  return Array.from({ length }, (_, i) => min + i);
+};
 export const fullDate = (year:number, month:number, day:number | string, dateSeparator:string):string =>
   `${year}${dateSeparator}${month < 10 ? '0' + month : month}${dateSeparator}${
     parseInt(day as string) < 10 ? '0' + day : day

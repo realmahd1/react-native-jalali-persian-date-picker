@@ -60,3 +60,14 @@ export type THeader = {
   yearMonthBoxStyle: StyleProp<ViewStyle>;
   isShowMonthLabel: boolean | undefined;
 }
+
+export type TYearSelector = {
+  year: number;
+  onYearChange: (year: number) => void;
+  eachYearStyle: StyleProp<ViewStyle>;
+  selectedEachYearStyle: StyleProp<ViewStyle>;
+  eachYearTextStyle: StyleProp<TextStyle>;
+  selectedEachYearTextStyle: StyleProp<TextStyle>;
+  minYear: number;
+  maxYear: number;
+}

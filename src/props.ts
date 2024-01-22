@@ -46,19 +46,27 @@ export const DEFAULT_PROPS: TProps = {
 
   // Years
   eachYearStyle: {
-    width: 110,
-    height: 82,
+    flex: 1,
+    height: 40,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: '#4bcffa',
     marginTop: '1.5%',
     marginBottom: 5,
     marginHorizontal: '1.5%',
-    borderRadius: 10,
-    elevation: 3,
   },
-  eachYearTextStyle: { fontSize: 16, color: 'white' },
-
+  selectedEachYearStyle: {
+    flex: 1,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '1.5%',
+    marginBottom: 5,
+    marginHorizontal: '1.5%',
+    backgroundColor: 'coral',
+    borderRadius: 50,
+  },
+  eachYearTextStyle: { fontSize: 16 },
+  selectedEachYearTextStyle: { fontSize: 16, color: 'white', fontWeight: 'bold' },
   // Months
   eachMonthStyle: {
     width: `${88 / 3}%`,
@@ -77,7 +85,7 @@ export const DEFAULT_PROPS: TProps = {
   weekdayStyle: {
     flex: 1,
     justifyContent: 'center',
-    alignItems: 'center'
+    alignItems: 'center',
   },
   weekdayTextStyle: { fontSize: 16, color: 'coral', marginBottom: 5, fontWeight: 'bold' },
   borderColor: 'coral',
