@@ -8,7 +8,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <DatePicker/>
+      <DatePicker isShowSelectTime onDateChange={(date) => console.warn(date)} />
     </View>
   );
 }

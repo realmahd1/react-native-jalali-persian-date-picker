@@ -1,5 +1,5 @@
 import { MONTHS } from '../utils';
-import { FlatList, Pressable, Text } from 'react-native';
+import { FlatList, Text, TouchableOpacity } from 'react-native';
 import React from 'react';
 import type { TMonthSelector } from './types';
 
@@ -34,7 +34,7 @@ const MonthSelector = ({
     return false;
   };
   const renderMonth = ({ item, index }: { item: string; index: number; }) => (
-    <Pressable key={item}
+    <TouchableOpacity key={item}
                style={isDisabled(index + 1) ? [eachMonthStyle, { transform: [{ rotateY: '180deg' }] }] : month === index + 1 ? [selectedEachMonthStyle, { transform: [{ rotateY: '180deg' }] }] : [eachMonthStyle, { transform: [{ rotateY: '180deg' }] }]}
                disabled={isDisabled(index + 1)} onPress={selectMonth(index + 1)}>
       <Text
@@ -42,7 +42,7 @@ const MonthSelector = ({
           color: 'gray',
           fontSize: 16,
         } : month === index + 1 ? selectedEachMonthTextStyle : eachMonthTextStyle}>{item}</Text>
-    </Pressable>
+    </TouchableOpacity>
   );
 
   return (

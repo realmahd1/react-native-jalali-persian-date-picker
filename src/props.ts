@@ -6,15 +6,16 @@ export const DEFAULT_PROPS: TProps = {
   showMonthLabel: true,
   style: {
     width: '95%',
-    height: '80%',
+    height: 500,
     alignSelf: 'center',
     backgroundColor: '#FFFFFF',
-    borderWidth: 1,
-    borderColor: 'black',
     borderRadius: 10,
+    borderWidth: 1,
+    borderColor: '#ccc',
     elevation: 4,
   },
   selectedDate: today(),
+  isShowSelectTime: false,
   dateSeparator: '/',
   minDate: lastYear(),
   maxDate: nextYear(),
@@ -43,6 +44,24 @@ export const DEFAULT_PROPS: TProps = {
     resizeMode: 'center',
     tintColor: 'coral',
   },
+
+  // Select time
+  selectTimeContainerStyle: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 10,
+    borderTopWidth: 1,
+    borderTopColor: 'rgba(204,204,204,0.5)'
+  },
+
+  selectTimePickerStyle: {
+    borderBottomWidth: 1,
+    width: 100,
+    borderColor: 'coral',
+  },
+
+  selectTimePickerMode: 'dropdown',
 
   // Years
   eachYearStyle: {
@@ -91,7 +110,7 @@ export const DEFAULT_PROPS: TProps = {
   eachMonthTextStyle: { fontSize: 16 },
   selectedEachMonthTextStyle: { fontSize: 16, color: 'white', fontWeight: 'bold' },
   // Weekdays
-  weekdaysContainerStyle: { height: '10%' },
+  weekdaysContainerStyle: { height: '10%', borderBottomWidth: 1, borderColor: 'coral' },
   weekdayStyle: {
     flex: 1,
     justifyContent: 'center',

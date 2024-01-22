@@ -1,5 +1,5 @@
 import React from 'react';
-import { FlatList, Pressable, Text } from 'react-native';
+import { FlatList, Text, TouchableOpacity } from 'react-native';
 import { getYears, toPersian } from '../utils';
 import type { TYearSelector } from './types';
 
@@ -15,9 +15,11 @@ const YearSelector = ({
                       }: TYearSelector) => {
   const selectYear = (year: number) => () => onYearChange(year);
   const renderYear = ({ item }: { item: number }) => (
-    <Pressable key={item} style={item === year ? selectedEachYearStyle : eachYearStyle} onPress={selectYear(item)}>
+    <TouchableOpacity key={item}
+                      style={item === year ? [selectedEachYearStyle, { transform: [{ rotateY: '180deg' }] }] : [eachYearStyle, { transform: [{ rotateY: '180deg' }] }]}
+                      onPress={selectYear(item)}>
       <Text style={item === year ? selectedEachYearTextStyle : eachYearTextStyle}>{toPersian(String(item))}</Text>
-    </Pressable>
+    </TouchableOpacity>
   );
 
   return (
@@ -26,6 +28,7 @@ const YearSelector = ({
         width: '95%',
         alignSelf: 'center',
         marginBottom: '3%',
+        transform: [{ rotateY: '180deg' }],
       }}
       data={getYears(minYear, maxYear)}
       renderItem={renderYear}

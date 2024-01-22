@@ -13,6 +13,11 @@ export type TProps = {
   selectedDate?: string;
 
   /**
+   * Is Show select time picker
+   */
+  isShowSelectTime?: boolean;
+
+  /**
    * Show month label
    */
   showMonthLabel?: boolean;
@@ -35,7 +40,7 @@ export type TProps = {
    * @required
    * On date change callback
    */
-  onDateChange: Function;
+  onDateChange: (date: string) => void;
 
   /**
    * Header style which contains arrows and year-month
@@ -76,6 +81,26 @@ export type TProps = {
    * Next icon style
    */
   nextIconStyle?: StyleProp<ImageStyle>;
+
+  /**
+   * Select time container style
+   */
+  selectTimeContainerStyle?: StyleProp<ViewStyle>;
+
+  /**
+   * Select time picker style
+   */
+  selectTimePickerStyle?: StyleProp<ViewStyle>;
+
+  /**
+   * Select time picker items style
+   */
+  selectTimePickerItemStyle?: StyleProp<TextStyle>;
+
+  /**
+   * Select time picker mode
+   */
+  selectTimePickerMode?: 'dialog' | 'dropdown';
 
   /**
    * Each year box style in year selector

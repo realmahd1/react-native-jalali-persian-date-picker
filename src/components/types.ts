@@ -84,3 +84,10 @@ export type TMonthSelector = {
   minMonth: number;
   maxMonth: number;
 }
+export type TSelectTime = {
+  mode?: 'dialog' | 'dropdown';
+  containerStyle: StyleProp<ViewStyle>;
+  pickerStyle: StyleProp<ViewStyle>;
+  pickerItemStyle: StyleProp<TextStyle>;
+  onTimeChange: (time: string) => void;
+}

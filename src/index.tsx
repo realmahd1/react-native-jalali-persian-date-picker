@@ -7,6 +7,7 @@ import Weekdays from './components/Weekdays';
 import Header from './components/Header';
 import YearSelector from './components/YearSelector';
 import MonthSelector from './components/MonthSelector';
+import SelectTime from './components/SelectTime';
 
 type TState = {
   year: number;
@@ -17,6 +18,7 @@ type TState = {
   minMonth: number;
   maxYear: number;
   maxMonth: number;
+  time: string;
 };
 
 class DatePicker extends PureComponent<TProps, TState> {
@@ -71,7 +73,8 @@ class DatePicker extends PureComponent<TProps, TState> {
       minMonth,
       maxYear,
       maxMonth,
-    };
+      time: '',
+    } as TState;
   }
 
   renderMonths() {
@@ -116,13 +119,14 @@ class DatePicker extends PureComponent<TProps, TState> {
 
   renderContent() {
     const { mode } = this.state;
-
+    const { isShowSelectTime } = this.props;
     switch (mode) {
       case 'calendar':
         return (
           <>
             {this.renderWeekdays()}
             {this.renderCalendar()}
+            {isShowSelectTime && this.renderSelectTime()}
           </>
         );
       case 'month':
@@ -136,6 +140,26 @@ class DatePicker extends PureComponent<TProps, TState> {
         );
 
     }
+  }
+
+  renderSelectTime() {
+    const {
+      selectTimeContainerStyle,
+      selectTimePickerItemStyle,
+      selectTimePickerStyle,
+      selectTimePickerMode,
+      onDateChange,
+    } = this.props;
+    const { date } = this.state;
+    const onTimeChange = (time: string) => {
+      this.setState({ time });
+      onDateChange(`${date} ${time}`);
+    };
+
+    return (
+      <SelectTime containerStyle={selectTimeContainerStyle} pickerStyle={selectTimePickerStyle}
+                  mode={selectTimePickerMode} pickerItemStyle={selectTimePickerItemStyle} onTimeChange={onTimeChange} />
+    );
   }
 
   renderWeekdays() {
@@ -220,7 +244,7 @@ class DatePicker extends PureComponent<TProps, TState> {
   }
 
   renderCalendar() {
-    const { year, month, date } = this.state;
+    const { year, month, date, time } = this.state as TState;
     const {
       dateSeparator,
       minDate,
@@ -234,7 +258,7 @@ class DatePicker extends PureComponent<TProps, TState> {
       dayTextColor,
       disabledTextColor,
     } = this.props;
-    const onChange = (date: string) => onDateChange(date);
+    const onChange = (date: string) => onDateChange(`${date} ${time}`);
 
     return (
       <Calendar
