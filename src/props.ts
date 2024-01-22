@@ -69,17 +69,27 @@ export const DEFAULT_PROPS: TProps = {
   selectedEachYearTextStyle: { fontSize: 16, color: 'white', fontWeight: 'bold' },
   // Months
   eachMonthStyle: {
-    width: `${88 / 3}%`,
-    height: `${88 / 4}%`,
+    flex: 1,
+    height: 40,
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: 'coral',
-    marginBottom: '3%',
-    borderRadius: 10,
-    elevation: 3,
+    marginTop: '1.5%',
+    marginBottom: 5,
+    marginHorizontal: '1.5%',
   },
-  eachMonthTextStyle: { fontSize: 16, color: 'white' },
-
+  selectedEachMonthStyle: {
+    flex: 1,
+    height: 40,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginTop: '1.5%',
+    marginBottom: 5,
+    marginHorizontal: '1.5%',
+    backgroundColor: 'coral',
+    borderRadius: 50,
+  },
+  eachMonthTextStyle: { fontSize: 16 },
+  selectedEachMonthTextStyle: { fontSize: 16, color: 'white', fontWeight: 'bold' },
   // Weekdays
   weekdaysContainerStyle: { height: '10%' },
   weekdayStyle: {

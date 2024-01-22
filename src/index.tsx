@@ -6,6 +6,7 @@ import Calendar from './components/Calendar';
 import Weekdays from './components/Weekdays';
 import Header from './components/Header';
 import YearSelector from './components/YearSelector';
+import MonthSelector from './components/MonthSelector';
 
 type TState = {
   year: number;
@@ -73,6 +74,28 @@ class DatePicker extends PureComponent<TProps, TState> {
     };
   }
 
+  renderMonths() {
+    const { year, month } = this.state;
+    const { eachMonthStyle, selectedEachMonthTextStyle, selectedEachMonthStyle, eachMonthTextStyle } = this.props;
+    const onMonthChange = (month: number) => this.setState({ month, mode: 'calendar' });
+
+    return (
+      <MonthSelector
+        onMonthChange={onMonthChange}
+        eachMonthStyle={eachMonthStyle}
+        selectedEachMonthStyle={selectedEachMonthStyle}
+        eachMonthTextStyle={eachMonthTextStyle}
+        selectedEachMonthTextStyle={selectedEachMonthTextStyle}
+        year={year}
+        month={month}
+        minYear={this.state.minYear}
+        minMonth={this.state.minMonth}
+        maxYear={this.state.maxYear}
+        maxMonth={this.state.maxMonth}
+      />
+    );
+  }
+
   renderYears() {
     const { eachYearStyle, eachYearTextStyle, selectedEachYearTextStyle, selectedEachYearStyle } = this.props;
     const onYearChange = (year: number) => this.setState({ year, mode: 'month' });
@@ -102,6 +125,9 @@ class DatePicker extends PureComponent<TProps, TState> {
             {this.renderCalendar()}
           </>
         );
+      case 'month':
+        return this.renderMonths();
+
       case 'year':
         return this.renderYears();
       default :

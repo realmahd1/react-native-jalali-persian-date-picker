@@ -103,9 +103,19 @@ export type TProps = {
   eachMonthStyle?: StyleProp<ViewStyle>;
 
   /**
+   * Selected Each month box style in month selector
+   */
+  selectedEachMonthStyle?: StyleProp<ViewStyle>;
+
+  /**
    * Each month text style in month selector
    */
   eachMonthTextStyle?: StyleProp<TextStyle>;
+
+  /**
+   * Selected Each month text style in month selector
+   */
+  selectedEachMonthTextStyle?: StyleProp<TextStyle>;
 
   /**
    * Top row style which contains weekdays

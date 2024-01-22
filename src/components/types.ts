@@ -71,3 +71,16 @@ export type TYearSelector = {
   minYear: number;
   maxYear: number;
 }
+export type TMonthSelector = {
+  year: number;
+  month: number;
+  onMonthChange: (year: number) => void;
+  eachMonthStyle: StyleProp<ViewStyle>;
+  selectedEachMonthStyle: StyleProp<ViewStyle>;
+  eachMonthTextStyle: StyleProp<TextStyle>;
+  selectedEachMonthTextStyle: StyleProp<TextStyle>;
+  minYear: number;
+  maxYear: number;
+  minMonth: number;
+  maxMonth: number;
+}
