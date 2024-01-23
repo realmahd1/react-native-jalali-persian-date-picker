@@ -1,15 +1,20 @@
 import * as React from 'react';
 
-import { StyleSheet, View } from 'react-native';
-import DatePicker from 'react-native-jalali-persian-date-picker';
+import { StyleSheet, Text, View } from 'react-native';
+import DatePicker, { Calendar } from 'react-native-jalali-persian-date-picker';
 import { useState } from 'react';
+import { today } from '../../src/utils';
 
 export default function App() {
-  const [value, setValue] = useState<string | undefined>();
-  console.log(value);
+  const [value, setValue] = useState<string | undefined>(today());
   return (
     <View style={styles.container}>
-      <DatePicker value={value} isShowSelectTime={true} onChange={(date) => setValue(date)} />
+      <Text style={styles.title}>Date Picker</Text>
+      <DatePicker value={value} onChange={(date) => setValue(date)} />
+      <Text style={styles.title}>Date & Time Picker</Text>
+      <DatePicker isShowSelectTime={true} value={value} onChange={(date) => setValue(date)} />
+      <Text style={styles.title}>Calendar</Text>
+      <Calendar value={value} onChange={(date) => setValue(date)} style={styles.calendar} />
     </View>
   );
 }
@@ -20,9 +25,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
   },
-  box: {
-    width: 60,
-    height: 60,
-    marginVertical: 20,
+  calendar: {
+    borderColor: '#ccc',
+    borderWidth: 1,
+    margin: 10,
+    height: 450,
+    paddingVertical: 10,
+    paddingHorizontal: 5,
+    borderRadius: 10,
+  },
+  title: {
+    marginTop: 20,
+    marginBottom: 5,
+    fontSize: 20,
   },
 });

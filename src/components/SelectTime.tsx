@@ -2,7 +2,7 @@ import { Picker } from '@react-native-picker/picker';
 import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import type { TSelectTime } from './types';
-import { getTimeHours, getTimeMinutes } from '../utils';
+import { getTimeHours, getTimeMinutes, toPersian } from '../utils';
 
 export default function SelectTime({
                                      mode,
@@ -30,7 +30,7 @@ export default function SelectTime({
           onTimeChange(`${itemValue}:${minute}`);
         }} itemStyle={pickerItemStyle} mode={mode}>
           {getTimeHours().map(time =>
-            <Picker.Item key={time} label={String(time)} value={time} />)}
+            <Picker.Item key={time} label={toPersian(String(time))} value={time} />)}
         </Picker>
       </View>
 
@@ -42,7 +42,7 @@ export default function SelectTime({
           onTimeChange(`${hour}:${itemValue}`);
         }} itemStyle={pickerItemStyle} mode={mode}>
           {getTimeMinutes().map(time =>
-            <Picker.Item key={time} label={String(time)} value={time} />)}
+            <Picker.Item key={time} label={toPersian(String(time))} value={time} />)}
         </Picker>
       </View>
     </View>
