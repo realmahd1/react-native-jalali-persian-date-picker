@@ -1,13 +1,17 @@
-import { Image, Modal, Pressable, StyleSheet, Text, View } from 'react-native';
+import { Image, Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Calendar from './Calendar';
-import React, { useState } from 'react';
+import React, { cloneElement, isValidElement, useState } from 'react';
 import type { TDatePickerProps } from '../types';
 
-export default function DatePicker({ datePickerModalStyle, datePickerDismissIconColor, ...props }: TDatePickerProps) {
+export default function DatePicker({
+                                     renderItem,
+                                     datePickerModalStyle,
+                                     datePickerDismissIconColor,
+                                     ...props
+                                   }: TDatePickerProps) {
   const [modalVisible, setModalVisible] = useState(false);
-
   return (
-    <View style={styles.centeredView}>
+    <View>
       <Modal
         animationType='slide'
         transparent={true}
@@ -27,10 +31,20 @@ export default function DatePicker({ datePickerModalStyle, datePickerDismissIcon
           </View>
         </View>
       </Modal>
-      <Pressable
-        onPress={() => setModalVisible(true)}>
-        <Text>Show Modal</Text>
-      </Pressable>
+      <TouchableOpacity onPress={() => setModalVisible(true)}>
+        {renderItem
+          ? isValidElement(renderItem)
+            ? cloneElement(renderItem)
+            : typeof renderItem === 'function'
+              ? renderItem()
+              : null
+          : (
+            <View style={styles.input}>
+              {props.value ? <Text>{props.value}</Text> : <Text>یک تاریخ انتخاب کنید</Text>}
+            </View>
+          )
+        }
+      </TouchableOpacity>
     </View>
   );
 }
@@ -58,5 +72,12 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.25,
     shadowRadius: 4,
     elevation: 5,
+  },
+  input: {
+    borderWidth: 1,
+    paddingHorizontal: 30,
+    paddingVertical: 5,
+    borderColor: '#ccc',
+    borderRadius: 10,
   },
 });

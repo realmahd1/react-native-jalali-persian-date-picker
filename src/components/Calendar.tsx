@@ -19,7 +19,7 @@ type TState = {
   maxYear: number;
   maxMonth: number;
   time: string;
-  open:boolean;
+  open: boolean;
 };
 
 class Calendar extends PureComponent<TCalendarProps, TState> {
@@ -31,9 +31,10 @@ class Calendar extends PureComponent<TCalendarProps, TState> {
     let year = 0;
     let month = 0;
     let date = '';
+    let time = '';
 
-    if (props.selectedDate && props.dateSeparator) {
-      const selectedDate = props.selectedDate as string;
+    if (props.dateSeparator) {
+      const selectedDate = props.value?.length === 16 ? props.value.split(' ')[0] as string : props.value as string;
       const dateSeparator = props.dateSeparator as string;
 
       const dateComponents: string[] = selectedDate.split(dateSeparator);
@@ -41,7 +42,6 @@ class Calendar extends PureComponent<TCalendarProps, TState> {
         year = parseInt(dateComponents[0] as string);
         month = parseInt(dateComponents[1] as string);
       }
-      date = selectedDate;
     }
 
     if (Platform.OS === 'android') {
@@ -65,6 +65,10 @@ class Calendar extends PureComponent<TCalendarProps, TState> {
         maxMonth = parseInt(maxDateArray[1] as string);
       }
     }
+    if (props.value?.length === 16) {
+      time = props.value.split(' ')[1] as string;
+    }
+
     this.state = {
       year,
       month,
@@ -74,7 +78,7 @@ class Calendar extends PureComponent<TCalendarProps, TState> {
       minMonth,
       maxYear,
       maxMonth,
-      time: '',
+      time: time,
     } as TState;
   }
 
@@ -149,12 +153,12 @@ class Calendar extends PureComponent<TCalendarProps, TState> {
       selectTimePickerItemStyle,
       selectTimePickerStyle,
       selectTimePickerMode,
-      onDateChange,
+      onChange,
     } = this.props;
     const { date } = this.state;
     const onTimeChange = (time: string) => {
       this.setState({ time });
-      onDateChange(`${date} ${time}`);
+      onChange(`${date} ${time}`);
     };
 
     return (
@@ -250,7 +254,7 @@ class Calendar extends PureComponent<TCalendarProps, TState> {
       dateSeparator,
       minDate,
       maxDate,
-      onDateChange,
+      onChange,
       dayStyle,
       selectedDayStyle,
       selectedDayColor,
@@ -259,7 +263,7 @@ class Calendar extends PureComponent<TCalendarProps, TState> {
       dayTextColor,
       disabledTextColor,
     } = this.props;
-    const onChange = (date: string) => onDateChange(`${date} ${time}`);
+    const onDateChange = (date: string) => onChange(`${date} ${time}`);
 
     return (
       <RootCalendar
@@ -268,7 +272,7 @@ class Calendar extends PureComponent<TCalendarProps, TState> {
         selectedDate={date}
         onDateChange={(date: string) => {
           this.setState({ date });
-          onChange(date);
+          onDateChange(date);
         }}
         dateSeparator={dateSeparator as string}
         minDate={minDate as string}

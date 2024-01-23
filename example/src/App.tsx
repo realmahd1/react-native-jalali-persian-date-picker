@@ -2,13 +2,14 @@ import * as React from 'react';
 
 import { StyleSheet, View } from 'react-native';
 import DatePicker from 'react-native-jalali-persian-date-picker';
+import { useState } from 'react';
 
 export default function App() {
-
-
+  const [value, setValue] = useState<string | undefined>();
+  console.log(value);
   return (
     <View style={styles.container}>
-      <DatePicker isShowSelectTime={true} onDateChange={(date) => console.log(date)} />
+      <DatePicker value={value} isShowSelectTime={true} onChange={(date) => setValue(date)} />
     </View>
   );
 }

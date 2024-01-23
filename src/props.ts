@@ -9,12 +9,12 @@ export const DEFAULT_PROPS: TCalendarProps = {
     alignSelf: 'center',
     height: 400,
   },
-  selectedDate: today(),
+  value: today(),
   isShowSelectTime: false,
   dateSeparator: '/',
   minDate: lastYear(),
   maxDate: nextYear(),
-  onDateChange: (date: string) => console.log(date),
+  onChange: (date: string) => console.log(date),
 
   // Header
   headerContainerStyle: { height: '15%' },

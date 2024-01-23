@@ -9,7 +9,7 @@ export type TCalendarProps = {
   /**
    * Selected date
    */
-  selectedDate?: string;
+  value?: string;
 
   /**
    * Is Show select time picker
@@ -39,7 +39,7 @@ export type TCalendarProps = {
    * @required
    * On date change callback
    */
-  onDateChange: (date: string) => void;
+  onChange: (date: string) => void;
 
   /**
    * Header style which contains arrows and year-month
@@ -206,4 +206,8 @@ export type TDatePickerProps = TCalendarProps & {
    * Date Picker Dismiss Icon color
    */
   datePickerDismissIconColor?: ColorValue;
+  /**
+   * Custom render Item for date picker input
+   */
+  renderItem?: Element
 }
