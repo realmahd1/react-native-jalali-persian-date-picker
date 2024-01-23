@@ -86,6 +86,7 @@ export type TMonthSelector = {
 }
 export type TSelectTime = {
   mode?: 'dialog' | 'dropdown';
+  time: string;
   containerStyle: StyleProp<ViewStyle>;
   pickerStyle: StyleProp<ViewStyle>;
   pickerItemStyle: StyleProp<TextStyle>;

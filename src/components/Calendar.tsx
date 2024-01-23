@@ -42,6 +42,7 @@ class Calendar extends PureComponent<TCalendarProps, TState> {
         year = parseInt(dateComponents[0] as string);
         month = parseInt(dateComponents[1] as string);
       }
+      date = selectedDate;
     }
 
     if (Platform.OS === 'android') {
@@ -155,14 +156,14 @@ class Calendar extends PureComponent<TCalendarProps, TState> {
       selectTimePickerMode,
       onChange,
     } = this.props;
-    const { date } = this.state;
+    const { date, time } = this.state as TState;
     const onTimeChange = (time: string) => {
       this.setState({ time });
       onChange(`${date} ${time}`);
     };
 
     return (
-      <SelectTime containerStyle={selectTimeContainerStyle} pickerStyle={selectTimePickerStyle}
+      <SelectTime time={time} containerStyle={selectTimeContainerStyle} pickerStyle={selectTimePickerStyle}
                   mode={selectTimePickerMode} pickerItemStyle={selectTimePickerItemStyle} onTimeChange={onTimeChange} />
     );
   }
