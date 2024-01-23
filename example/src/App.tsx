@@ -1,14 +1,14 @@
 import * as React from 'react';
 
 import { StyleSheet, View } from 'react-native';
-import DatePicker from 'react-native-jalali-persian-date-picker';
+import { Calendar } from 'react-native-jalali-persian-date-picker';
 
 export default function App() {
 
 
   return (
     <View style={styles.container}>
-      <DatePicker isShowSelectTime onDateChange={(date) => console.warn(date)} />
+      <Calendar isShowSelectTime onDateChange={(date) => console.warn(date)} />
     </View>
   );
 }
