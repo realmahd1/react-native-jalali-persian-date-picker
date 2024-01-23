@@ -1,18 +1,13 @@
 import { today, lastYear, nextYear } from './utils';
-import type { TProps } from './types';
+import type { TCalendarProps } from './types';
 
-export const DEFAULT_PROPS: TProps = {
+export const DEFAULT_PROPS: TCalendarProps = {
   // Date Picker
   showMonthLabel: true,
   style: {
     width: '95%',
-    height: 500,
     alignSelf: 'center',
-    backgroundColor: '#FFFFFF',
-    borderRadius: 10,
-    borderWidth: 1,
-    borderColor: '#ccc',
-    elevation: 4,
+    height: 400,
   },
   selectedDate: today(),
   isShowSelectTime: false,
@@ -50,9 +45,9 @@ export const DEFAULT_PROPS: TProps = {
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginVertical: 10,
+    marginTop: 5,
     borderTopWidth: 1,
-    borderTopColor: 'rgba(204,204,204,0.5)'
+    borderTopColor: 'rgba(204,204,204,0.5)',
   },
 
   selectTimePickerStyle: {

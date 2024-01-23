@@ -48,7 +48,7 @@ const MonthSelector = ({
   return (
     <FlatList
       style={{
-        width: '95%',
+        minWidth: '95%',
         alignSelf: 'center',
         marginBottom: '3%',
         transform: [{ rotateY: '180deg' }],

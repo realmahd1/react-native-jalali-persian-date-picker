@@ -1,11 +1,10 @@
-import type { StyleProp, ViewStyle, ImageSourcePropType, TextStyle, ImageStyle } from 'react-native';
+import type { StyleProp, ViewStyle, ImageSourcePropType, TextStyle, ImageStyle, ColorValue } from 'react-native';
 
-export type TProps = {
+export type TCalendarProps = {
   /**
-   * @required
    * Calendar container style
    */
-  style: StyleProp<ViewStyle>;
+  style?: StyleProp<ViewStyle>;
 
   /**
    * Selected date
@@ -196,4 +195,15 @@ export type TProps = {
    * Disabled days text color
    */
   disabledTextColor?: string;
+}
+
+export type TDatePickerProps = TCalendarProps & {
+  /**
+   * Date Picker Modal style
+   */
+  datePickerModalStyle?: StyleProp<ViewStyle>;
+  /**
+   * Date Picker Dismiss Icon color
+   */
+  datePickerDismissIconColor?: ColorValue;
 }

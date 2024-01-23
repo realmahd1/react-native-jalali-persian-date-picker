@@ -1,7 +1,7 @@
 import React, { PureComponent } from 'react';
 import { Platform, UIManager, View } from 'react-native';
 import { DEFAULT_PROPS } from '../props';
-import type { TProps } from '../types';
+import type { TCalendarProps } from '../types';
 import RootCalendar from './RootCalendar';
 import Weekdays from './Weekdays';
 import Header from './Header';
@@ -19,12 +19,13 @@ type TState = {
   maxYear: number;
   maxMonth: number;
   time: string;
+  open:boolean;
 };
 
-class Calendar extends PureComponent<TProps, TState> {
+class Calendar extends PureComponent<TCalendarProps, TState> {
   static defaultProps = DEFAULT_PROPS;
 
-  constructor(props: TProps) {
+  constructor(props: TCalendarProps) {
     super(props);
 
     let year = 0;
