@@ -157,11 +157,6 @@ export type TCalendarProps = {
   weekdayTextStyle?: StyleProp<TextStyle>;
 
   /**
-   * Borders color (Below weekdays and around year-month button)
-   */
-  borderColor?: string;
-
-  /**
    * Each day style in calendar
    */
   dayStyle?: StyleProp<ViewStyle>;

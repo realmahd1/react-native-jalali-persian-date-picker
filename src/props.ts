@@ -112,7 +112,6 @@ export const DEFAULT_PROPS: TCalendarProps = {
     alignItems: 'center',
   },
   weekdayTextStyle: { fontSize: 16, color: 'coral', marginBottom: 5, fontWeight: 'bold' },
-  borderColor: 'coral',
 
   // Days
   dayStyle: {
