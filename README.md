@@ -25,14 +25,33 @@ Here is a simple example of how to use the `DatePicker` component:
 import DatePicker from 'react-native-jalali-persian-date-picker';
 
 export default function Example() {
-  const [value, setValue] = useState < string | undefined > ();
+  const [value, setValue] = useState <string | undefined>();
 
   return (
     <DatePicker value={value} onChange={(date) => setValue(date)} />
   )
 }
 ```
+#### Date Picker (Dark)
 
+Here is a simple example of how to have a dark theme for the `DatePicker` component:
+
+```jsx
+import DatePicker from 'react-native-jalali-persian-date-picker';
+
+export default function Example() {
+  const [value, setValue] = useState <string | undefined>();
+
+  return (
+    <DatePicker style={{ backgroundColor: '#161616' }} selectTimeDropdownIconColor={'white'}
+                eachMonthTextStyle={{ color: 'white' }} eachYearTextStyle={{ color: 'white' }}
+                selectTimePickerItemStyle={{ color: 'white', backgroundColor: '#161616' }}
+                datePickerDismissIconColor={'white'} yearMonthTextStyle={{ color: 'white' }}
+                datePickerModalStyle={{ backgroundColor: '#161616' }} dayTextColor={'#fff'}
+                value={value} onChange={(date) => setValue(date)} />
+  );
+}
+```
 #### Calendar
 
 Here is a simple example of how to use the `Calendar` component:
