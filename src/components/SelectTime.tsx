@@ -25,11 +25,11 @@ export default function SelectTime({
   return (
     <View style={containerStyle}>
       <View style={pickerStyle}>
-        <Picker selectedValue={hour} onValueChange={(itemValue) => {
-          setHour(itemValue);
-          onTimeChange(`${itemValue}:${minute}`);
+        <Picker selectedValue={minute} onValueChange={(itemValue) => {
+          setMinute(itemValue);
+          onTimeChange(`${hour}:${itemValue}`);
         }} itemStyle={pickerItemStyle} mode={mode}>
-          {getTimeHours().map(time =>
+          {getTimeMinutes().map(time =>
             <Picker.Item key={time} label={toPersian(String(time))} value={time} />)}
         </Picker>
       </View>
@@ -37,11 +37,11 @@ export default function SelectTime({
       <Text style={{ marginHorizontal: 10, fontSize: 16 }}>:</Text>
 
       <View style={pickerStyle}>
-        <Picker selectedValue={minute} onValueChange={(itemValue) => {
-          setMinute(itemValue);
-          onTimeChange(`${hour}:${itemValue}`);
+        <Picker selectedValue={hour} onValueChange={(itemValue) => {
+          setHour(itemValue);
+          onTimeChange(`${itemValue}:${minute}`);
         }} itemStyle={pickerItemStyle} mode={mode}>
-          {getTimeMinutes().map(time =>
+          {getTimeHours().map(time =>
             <Picker.Item key={time} label={toPersian(String(time))} value={time} />)}
         </Picker>
       </View>

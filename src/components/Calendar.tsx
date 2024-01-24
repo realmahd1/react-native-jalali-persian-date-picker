@@ -1,5 +1,5 @@
 import React, { PureComponent } from 'react';
-import { Platform, UIManager, View } from 'react-native';
+import { I18nManager, Platform, UIManager, View } from 'react-native';
 import { DEFAULT_PROPS } from '../props';
 import type { TCalendarProps } from '../types';
 import RootCalendar from './RootCalendar';
@@ -81,6 +81,13 @@ class Calendar extends PureComponent<TCalendarProps, TState> {
       maxMonth,
       time: time,
     } as TState;
+  }
+
+  componentDidMount() {
+    if (!I18nManager.isRTL) {
+      I18nManager.allowRTL(true);
+      I18nManager.forceRTL(true);
+    }
   }
 
   renderMonths() {

@@ -25,9 +25,9 @@ const Header = memo(
      minMonth,
      maxMonth,
      yearMonthBoxStyle,
-     isShowMonthLabel
-   }:THeader) => {
-    const renderIcon = (icon:ImageSourcePropType | undefined, isBack = false) => {
+     isShowMonthLabel,
+   }: THeader) => {
+    const renderIcon = (icon: ImageSourcePropType | undefined, isBack = false) => {
       if (mode === 'year') {
         return null;
       }
@@ -62,12 +62,12 @@ const Header = memo(
               height: '100%',
               justifyContent: 'center',
               alignItems: 'center',
-              opacity: disabled() ? 0.5 : 1
+              opacity: disabled() ? 0.5 : 1,
             },
             isBack
               ? { position: 'absolute', left: 5 }
               : { position: 'absolute', right: 5 },
-            iconContainerStyle
+            iconContainerStyle,
           ]}
           disabled={disabled()}
           onPress={isBack ? onBackIconPress : onNextIconPress}
@@ -82,7 +82,7 @@ const Header = memo(
       if (mode === 'calendar') {
         return (
           <Text style={yearMonthTextStyle}>
-            {`${isShowMonthLabel ? MONTHS[month] : toPersian(String(month))}، ${toPersian(String(year))}` }
+            {`${isShowMonthLabel ? MONTHS[month] : toPersian(String(month))}، ${toPersian(String(year))}`}
           </Text>
         );
       }
@@ -102,12 +102,11 @@ const Header = memo(
       <View
         style={[
           {
-            flexDirection: 'row-reverse',
             justifyContent: 'center',
             alignItems: 'center',
-            alignSelf: 'stretch'
+            alignSelf: 'stretch',
           },
-          containerStyle
+          containerStyle,
         ]}
       >
         {renderIcon(backIcon, true)}
@@ -122,7 +121,7 @@ const Header = memo(
         {renderIcon(nextIcon)}
       </View>
     );
-  }
+  },
 );
 
 export default Header;

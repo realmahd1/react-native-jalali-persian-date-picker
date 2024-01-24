@@ -35,8 +35,8 @@ const MonthSelector = ({
   };
   const renderMonth = ({ item, index }: { item: string; index: number; }) => (
     <TouchableOpacity key={item}
-               style={isDisabled(index + 1) ? [eachMonthStyle, { transform: [{ rotateY: '180deg' }] }] : month === index + 1 ? [selectedEachMonthStyle, { transform: [{ rotateY: '180deg' }] }] : [eachMonthStyle, { transform: [{ rotateY: '180deg' }] }]}
-               disabled={isDisabled(index + 1)} onPress={selectMonth(index + 1)}>
+                      style={isDisabled(index + 1) ? eachMonthStyle : month === index + 1 ? selectedEachMonthStyle : eachMonthStyle}
+                      disabled={isDisabled(index + 1)} onPress={selectMonth(index + 1)}>
       <Text
         style={isDisabled(index + 1) ? {
           color: 'gray',
@@ -51,7 +51,6 @@ const MonthSelector = ({
         minWidth: '95%',
         alignSelf: 'center',
         marginBottom: '3%',
-        transform: [{ rotateY: '180deg' }],
       }}
       data={MONTHS}
       renderItem={renderMonth}

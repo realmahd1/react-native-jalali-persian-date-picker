@@ -15,7 +15,7 @@ const Weekdays = memo(
     );
 
     return (
-      <View style={[{ flexDirection: 'row-reverse' }, weekdaysContainerStyle]}>
+      <View style={[{ flexDirection: 'row' }, weekdaysContainerStyle]}>
         {WEEKDAYS_SHORT.map(renderWeekdays)}
       </View>
     );

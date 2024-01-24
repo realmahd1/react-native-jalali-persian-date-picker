@@ -54,7 +54,7 @@ const RootCalendar = memo(
 
     return (
       <FlatList
-        style={{ flex: 1, transform: [{ rotateY: '180deg' }] }}
+        style={{ flex: 1, }}
         data={getDays(year, month)}
         renderItem={renderDay}
         keyExtractor={item => `${year}/${month}/${item}`}

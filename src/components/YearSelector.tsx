@@ -16,7 +16,7 @@ const YearSelector = ({
   const selectYear = (year: number) => () => onYearChange(year);
   const renderYear = ({ item }: { item: number }) => (
     <TouchableOpacity key={item}
-                      style={item === year ? [selectedEachYearStyle, { transform: [{ rotateY: '180deg' }] }] : [eachYearStyle, { transform: [{ rotateY: '180deg' }] }]}
+                      style={item === year ? selectedEachYearStyle : eachYearStyle}
                       onPress={selectYear(item)}>
       <Text style={item === year ? selectedEachYearTextStyle : eachYearTextStyle}>{toPersian(String(item))}</Text>
     </TouchableOpacity>
@@ -28,7 +28,6 @@ const YearSelector = ({
         minWidth: '95%',
         alignSelf: 'center',
         marginBottom: '3%',
-        transform: [{ rotateY: '180deg' }],
       }}
       data={getYears(minYear, maxYear)}
       renderItem={renderYear}

@@ -39,7 +39,6 @@ const Day = memo(
           <Text
             style={[
               {
-                transform: [{ rotateY: '180deg' }],
                 color: disabled
                   ? disabledTextColor
                   : isSelected

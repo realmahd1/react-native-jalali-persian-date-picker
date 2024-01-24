@@ -1,6 +1,6 @@
-import { Image, Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
+import { I18nManager, Image, Modal, Pressable, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 import Calendar from './Calendar';
-import React, { cloneElement, isValidElement, useState } from 'react';
+import React, { cloneElement, isValidElement, useEffect, useState } from 'react';
 import type { TDatePickerProps } from '../types';
 
 export default function DatePicker({
@@ -10,6 +10,12 @@ export default function DatePicker({
                                      ...props
                                    }: TDatePickerProps) {
   const [modalVisible, setModalVisible] = useState(false);
+  useEffect(() => {
+    if (!I18nManager.isRTL) {
+      I18nManager.allowRTL(true);
+      I18nManager.forceRTL(true);
+    }
+  }, []);
   return (
     <View>
       <Modal
@@ -22,7 +28,7 @@ export default function DatePicker({
         }>
         <View style={styles.centeredView}>
           <View style={[styles.modalView, datePickerModalStyle]}>
-            <Pressable style={{ position: 'absolute', top: 10, right: 15 }} onPress={() => setModalVisible(false)}>
+            <Pressable style={{ position: 'absolute', top: 10, left: 15 }} onPress={() => setModalVisible(false)}>
               <Image style={{ width: 20, height: 20, tintColor: datePickerDismissIconColor }}
                      source={{ uri: 'https://img.icons8.com/external-tal-revivo-filled-tal-revivo/48/external-close-cross-symbol-for-discontinued-and-invalid-basic-filled-tal-revivo.png' }} />
             </Pressable>
