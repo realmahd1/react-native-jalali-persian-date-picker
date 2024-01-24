@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { View, TouchableOpacity, Text, Image, type ImageSourcePropType } from 'react-native';
 import { MONTHS, toPersian } from '../utils';
 import type { THeader } from './types';
+import { DEFAULT_PROPS } from '../props';
 
 const Header = memo(
   ({
@@ -58,6 +59,7 @@ const Header = memo(
       return (
         <TouchableOpacity
           style={[
+            DEFAULT_PROPS.iconContainerStyle,
             {
               height: '100%',
               justifyContent: 'center',
@@ -81,13 +83,13 @@ const Header = memo(
     const renderTitle = () => {
       if (mode === 'calendar') {
         return (
-          <Text style={yearMonthTextStyle}>
+          <Text style={[DEFAULT_PROPS.yearMonthTextStyle, yearMonthTextStyle]}>
             {`${isShowMonthLabel ? MONTHS[month] : toPersian(String(month))}، ${toPersian(String(year))}`}
           </Text>
         );
       }
 
-      return <Text style={yearMonthTextStyle}>{toPersian(String(year))}</Text>;
+      return <Text style={[DEFAULT_PROPS.yearMonthTextStyle, yearMonthTextStyle]}>{toPersian(String(year))}</Text>;
     };
 
     const onYearMonthPress = () => {
@@ -101,6 +103,7 @@ const Header = memo(
     return (
       <View
         style={[
+          DEFAULT_PROPS.headerContainerStyle,
           {
             justifyContent: 'center',
             alignItems: 'center',
@@ -112,7 +115,7 @@ const Header = memo(
         {renderIcon(backIcon, true)}
 
         <TouchableOpacity
-          style={yearMonthBoxStyle}
+          style={[DEFAULT_PROPS.yearMonthBoxStyle, yearMonthBoxStyle]}
           onPress={onYearMonthPress}
         >
           {renderTitle()}

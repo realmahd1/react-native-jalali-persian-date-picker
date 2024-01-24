@@ -2,6 +2,7 @@ import React from 'react';
 import { FlatList, Text, TouchableOpacity } from 'react-native';
 import { getYears, toPersian } from '../utils';
 import type { TYearSelector } from './types';
+import { DEFAULT_PROPS } from '../props';
 
 const YearSelector = ({
                         year,
@@ -16,9 +17,10 @@ const YearSelector = ({
   const selectYear = (year: number) => () => onYearChange(year);
   const renderYear = ({ item }: { item: number }) => (
     <TouchableOpacity key={item}
-                      style={item === year ? selectedEachYearStyle : eachYearStyle}
+                      style={item === year ? [DEFAULT_PROPS.selectedEachYearStyle, selectedEachYearStyle] : [DEFAULT_PROPS.eachYearStyle, eachYearStyle]}
                       onPress={selectYear(item)}>
-      <Text style={item === year ? selectedEachYearTextStyle : eachYearTextStyle}>{toPersian(String(item))}</Text>
+      <Text
+        style={item === year ? [DEFAULT_PROPS.selectedEachYearTextStyle, selectedEachYearTextStyle] : [DEFAULT_PROPS.eachYearTextStyle, eachYearTextStyle]}>{toPersian(String(item))}</Text>
     </TouchableOpacity>
   );
 

@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { toPersian } from '../utils';
 import type { TDay } from './types';
+import { DEFAULT_PROPS } from '../props';
 
 const Day = memo(
   ({
@@ -19,17 +20,18 @@ const Day = memo(
    }: TDay) => {
     const blank = item === '.';
     if (blank) {
-      return <View style={dayStyle} />;
+      return <View style={[DEFAULT_PROPS.dayStyle, dayStyle]} />;
     }
 
     return (
       <TouchableOpacity
-        style={dayStyle}
+        style={[DEFAULT_PROPS.dayStyle, dayStyle]}
         disabled={isSelected || disabled}
         onPress={onDateChange}
       >
         <View
           style={[
+            DEFAULT_PROPS.selectedDayStyle,
             {
               backgroundColor: isSelected ? selectedDayColor : 'transparent',
             },
@@ -38,6 +40,7 @@ const Day = memo(
         >
           <Text
             style={[
+              DEFAULT_PROPS.dayTextStyle,
               {
                 color: disabled
                   ? disabledTextColor

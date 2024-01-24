@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Text, View } from 'react-native';
 import type { TSelectTime } from './types';
 import { getTimeHours, getTimeMinutes, toPersian } from '../utils';
+import { DEFAULT_PROPS } from '../props';
 
 export default function SelectTime({
                                      mode,
@@ -25,7 +26,7 @@ export default function SelectTime({
   }, [time]);
   return (
     <View style={containerStyle}>
-      <View style={pickerStyle}>
+      <View style={[DEFAULT_PROPS.selectTimePickerStyle, pickerStyle]}>
         <Picker selectedValue={minute} onValueChange={(itemValue) => {
           setMinute(itemValue);
           onTimeChange(`${hour}:${itemValue}`);
@@ -37,7 +38,7 @@ export default function SelectTime({
 
       <Text style={{ marginHorizontal: 10, fontSize: 16 }}>:</Text>
 
-      <View style={pickerStyle}>
+      <View style={[DEFAULT_PROPS.selectTimePickerStyle, pickerStyle]}>
         <Picker dropdownIconColor={dropdownIconColor} selectedValue={hour} onValueChange={(itemValue) => {
           setHour(itemValue);
           onTimeChange(`${itemValue}:${minute}`);
