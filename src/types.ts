@@ -102,6 +102,11 @@ export type TCalendarProps = {
   selectTimePickerMode?: 'dialog' | 'dropdown';
 
   /**
+   * select time dropdown icon color
+   */
+  selectTimeDropdownIconColor?: ColorValue;
+
+  /**
    * Each year box style in year selector
    */
   eachYearStyle?: StyleProp<ViewStyle>;

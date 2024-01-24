@@ -10,6 +10,7 @@ export default function SelectTime({
                                      containerStyle,
                                      pickerStyle,
                                      pickerItemStyle,
+                                     dropdownIconColor,
                                      onTimeChange,
                                    }: TSelectTime) {
 
@@ -28,21 +29,21 @@ export default function SelectTime({
         <Picker selectedValue={minute} onValueChange={(itemValue) => {
           setMinute(itemValue);
           onTimeChange(`${hour}:${itemValue}`);
-        }} itemStyle={pickerItemStyle} mode={mode}>
+        }} mode={mode} dropdownIconColor={dropdownIconColor}>
           {getTimeMinutes().map(time =>
-            <Picker.Item key={time} label={toPersian(String(time))} value={time} />)}
+            <Picker.Item style={pickerItemStyle} key={time} label={toPersian(String(time))} value={time} />)}
         </Picker>
       </View>
 
       <Text style={{ marginHorizontal: 10, fontSize: 16 }}>:</Text>
 
       <View style={pickerStyle}>
-        <Picker selectedValue={hour} onValueChange={(itemValue) => {
+        <Picker dropdownIconColor={dropdownIconColor} selectedValue={hour} onValueChange={(itemValue) => {
           setHour(itemValue);
           onTimeChange(`${itemValue}:${minute}`);
-        }} itemStyle={pickerItemStyle} mode={mode}>
+        }} mode={mode}>
           {getTimeHours().map(time =>
-            <Picker.Item key={time} label={toPersian(String(time))} value={time} />)}
+            <Picker.Item style={pickerItemStyle} key={time} label={toPersian(String(time))} value={time} />)}
         </Picker>
       </View>
     </View>

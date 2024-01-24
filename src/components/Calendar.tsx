@@ -161,6 +161,7 @@ class Calendar extends PureComponent<TCalendarProps, TState> {
       selectTimePickerItemStyle,
       selectTimePickerStyle,
       selectTimePickerMode,
+      selectTimeDropdownIconColor,
       onChange,
     } = this.props;
     const { date, time } = this.state as TState;
@@ -170,7 +171,7 @@ class Calendar extends PureComponent<TCalendarProps, TState> {
     };
 
     return (
-      <SelectTime time={time} containerStyle={selectTimeContainerStyle} pickerStyle={selectTimePickerStyle}
+      <SelectTime time={time} dropdownIconColor={selectTimeDropdownIconColor} containerStyle={selectTimeContainerStyle} pickerStyle={selectTimePickerStyle}
                   mode={selectTimePickerMode} pickerItemStyle={selectTimePickerItemStyle} onTimeChange={onTimeChange} />
     );
   }
