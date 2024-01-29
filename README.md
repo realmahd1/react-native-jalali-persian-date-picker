@@ -8,10 +8,10 @@ A simple, customizable Calendar and Date/Time Picker for React native.
 ## Installation
 
 ```bash
-npm i react-native-jalali-persian-date-picker
+npm i react-native-jalali-persian-date-picker @react-native-picker/picker
 
 # or if you prefer Yarn:
-yarn add react-native-jalali-persian-date-picker
+yarn add react-native-jalali-persian-date-picker @react-native-picker/picker
 
 ```
 
@@ -99,7 +99,7 @@ export default function Example() {
 
 |            Prop             |                                Default                                |                     Type                     | Availability (DatePicker/ Calendar) |
 |:---------------------------:|:---------------------------------------------------------------------:|:--------------------------------------------:|:-----------------------------------:|
-|            style            |                    see [`Props.js`](src/props.js)                     |                 `ViewStyle`                  |                both                 |
+|            style            |                    see [`Props.ts`](src/props.ts)                     |                 `ViewStyle`                  |                both                 |
 |            value            |                                 today                                 |                   `string`                   |                both                 |
 |      isShowSelectTime       |                                 false                                 |                  `boolean`                   |                both                 |
 |       showMonthLabel        |                                 false                                 |                  `boolean`                   |                both                 |
@@ -107,32 +107,32 @@ export default function Example() {
 |           minDate           |                               last year                               |                   `string`                   |                both                 |
 |           maxDate           |                               next year                               |                   `string`                   |                both                 |
 |          onChange           |                       date => console.log(date)                       |                  `Function`                  |                both                 |
-|    headerContainerStyle     |                    see [`Props.js`](src/props.js)                     |                 `ViewStyle`                  |                both                 |
-|      yearMonthBoxStyle      |                    see [`Props.js`](src/props.js)                     |                 `ViewStyle`                  |                both                 |
+|    headerContainerStyle     |                    see [`Props.ts`](src/props.ts)                     |                 `ViewStyle`                  |                both                 |
+|      yearMonthBoxStyle      |                    see [`Props.ts`](src/props.ts)                     |                 `ViewStyle`                  |                both                 |
 |     yearMonthTextStyle      |                   { fontSize: 22, color: 'black' }                    |                 `TextStyle`                  |                both                 |
-|     iconContainerStyle      |                    see [`Props.js`](src/props.js)                     |                 `ViewStyle`                  |                both                 |
-|          backIcon           |                    see [`Props.js`](src/props.js)                     |    `ImageSourcePropType`  or `undefined`     |                both                 |
-|        backIconStyle        |                    see [`Props.js`](src/props.js)                     |                 `ImageStyle`                 |                both                 |
-|          nextIcon           |                    see [`Props.js`](src/props.js)                     | `ImageSourcePropType`         or `undefined` |                both                 |
-|        nextIconStyle        |                    see [`Props.js`](src/props.js)                     |                 `ImageStyle`                 |                both                 |
-|  selectTimeContainerStyle   |                    see [`Props.js`](src/props.js)                     |                 `ViewStyle`                  |                both                 |
-|    selectTimePickerStyle    |                    see [`Props.js`](src/props.js)                     |                 `ViewStyle`                  |                both                 |
+|     iconContainerStyle      |                    see [`Props.ts`](src/props.ts)                     |                 `ViewStyle`                  |                both                 |
+|          backIcon           |                    see [`Props.ts`](src/props.ts)                     |    `ImageSourcePropType`  or `undefined`     |                both                 |
+|        backIconStyle        |                    see [`Props.ts`](src/props.ts)                     |                 `ImageStyle`                 |                both                 |
+|          nextIcon           |                    see [`Props.ts`](src/props.ts)                     | `ImageSourcePropType`         or `undefined` |                both                 |
+|        nextIconStyle        |                    see [`Props.ts`](src/props.ts)                     |                 `ImageStyle`                 |                both                 |
+|  selectTimeContainerStyle   |                    see [`Props.ts`](src/props.ts)                     |                 `ViewStyle`                  |                both                 |
+|    selectTimePickerStyle    |                    see [`Props.ts`](src/props.ts)                     |                 `ViewStyle`                  |                both                 |
 | selectTimeDropdownIconColor |                                `#000`                                 |                 `ColorValue`                 |                both                 |
-|  selectTimePickerItemStyle  |                    see [`Props.js`](src/props.js)                     |                 `TextStyle`                  |                both                 |
+|  selectTimePickerItemStyle  |                    see [`Props.ts`](src/props.ts)                     |                 `TextStyle`                  |                both                 |
 |    selectTimePickerMode     |                              'dropdown'                               |            `dialog` or `dropdown`            |                both                 |
-|        eachYearStyle        |                    see [`Props.js`](src/props.js)                     |                 `ViewStyle`                  |                both                 |
-|    selectedEachYearStyle    |                    see [`Props.js`](src/props.js)                     |                 `ViewStyle`                  |                both                 |
+|        eachYearStyle        |                    see [`Props.ts`](src/props.ts)                     |                 `ViewStyle`                  |                both                 |
+|    selectedEachYearStyle    |                    see [`Props.ts`](src/props.ts)                     |                 `ViewStyle`                  |                both                 |
 |      eachYearTextStyle      |                           { fontSize: 16 }                            |                 `TextStyle`                  |                both                 |
 |  selectedEachYearTextStyle  |          { fontSize: 16, color: 'white',fontWeight: 'bold' }          |                 `TextStyle`                  |                both                 |
-|       eachMonthStyle        |                    see [`Props.js`](src/props.js)                     |                 `ViewStyle`                  |                both                 |
-|   selectedEachMonthStyle    |                    see [`Props.js`](src/props.js)                     |                 `ViewStyle`                  |                both                 |
+|       eachMonthStyle        |                    see [`Props.ts`](src/props.ts)                     |                 `ViewStyle`                  |                both                 |
+|   selectedEachMonthStyle    |                    see [`Props.ts`](src/props.ts)                     |                 `ViewStyle`                  |                both                 |
 |     eachMonthTextStyle      |                           { fontSize: 16 }                            |                 `TextStyle`                  |                both                 |
 | selectedEachMonthTextStyle  |          { fontSize: 16, color: 'white',fontWeight: 'bold' }          |                 `TextStyle`                  |                both                 |
-|   weekdaysContainerStyle    |                    see [`Props.js`](src/props.js)                     |                 `ViewStyle`                  |                both                 |
-|        weekdayStyle         |                    see [`Props.js`](src/props.js)                     |                 `ViewStyle`                  |                both                 |
+|   weekdaysContainerStyle    |                    see [`Props.ts`](src/props.ts)                     |                 `ViewStyle`                  |                both                 |
+|        weekdayStyle         |                    see [`Props.ts`](src/props.ts)                     |                 `ViewStyle`                  |                both                 |
 |      weekdayTextStyle       | { fontSize: 16, color: 'coral', marginBottom: 5, fontWeight: 'bold' } |                 `TextStyle`                  |                both                 |
-|          dayStyle           |                    see [`Props.js`](src/props.js)                     |                 `ViewStyle`                  |                both                 |
-|      selectedDayStyle       |                    see [`Props.js`](src/props.js)                     |                 `ViewStyle`                  |                both                 |
+|          dayStyle           |                    see [`Props.ts`](src/props.ts)                     |                 `ViewStyle`                  |                both                 |
+|      selectedDayStyle       |                    see [`Props.ts`](src/props.ts)                     |                 `ViewStyle`                  |                both                 |
 |      selectedDayColor       |                                `coral`                                |                   `string`                   |                both                 |
 |        dayTextStyle         |                           { fontSize: 18 }                            |                 `TextStyle`                  |                both                 |
 |    selectedDayTextColor     |                               `#FFFFFF`                               |                   `string`                   |                both                 |
