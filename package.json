@@ -1,6 +1,6 @@
 {
   "name": "react-native-jalali-persian-date-picker",
-  "version": "0.4.3",
+  "version": "0.4.4",
   "description": "React Native Jalali Date Picker Component",
   "main": "lib/commonjs/index",
   "module": "lib/module/index",
